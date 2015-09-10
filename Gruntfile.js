@@ -35,7 +35,6 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
-        reporterOutput: 'reporter/jshint.reporter.txt',
         force: true,
         strict: true,
         devel: true,
@@ -54,6 +53,7 @@ module.exports = function(grunt) {
       gruntfile: {
         src: [process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, 'Gruntfile.js') || path.resolve(__dirname, 'my-project-dir/Gruntfile.js')],
         options: {
+          reporterOutput: 'reporter/grunt.jshint.txt',
           node: true
         }
       },
@@ -64,6 +64,7 @@ module.exports = function(grunt) {
           '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/client/bower_components/**') || path.resolve(__dirname, 'my-project-dir/client/bower_components/**'))
         ],
         options: {
+          reporterOutput: 'reporter/scripts.jshint.txt',
           esnext: true,
           browser: true,
           browserify: true,
@@ -85,14 +86,16 @@ module.exports = function(grunt) {
     },
     jscs: {
       options: {
-        reporterOutput: 'reporter/jscs.reporter.txt',
         fix: false,
         verbose: true,
         force: true
       },
       gruntfile: {
         src: [process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, 'Gruntfile.js') || path.resolve(__dirname, 'my-project-dir/Gruntfile.js')],
-        options: {preset: 'grunt'}
+        options: {
+          preset: 'grunt',
+          reporterOutput: 'reporter/grunt.jscs.txt'
+        }
       },
       scripts: {
         src: [
@@ -100,19 +103,22 @@ module.exports = function(grunt) {
           '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/node_modules/**') || path.resolve(__dirname, 'my-project-dir/node_modules/**')),
           '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/client/bower_components/**') || path.resolve(__dirname, 'my-project-dir/client/bower_components/**'))
         ],
-        options: {preset: 'google'}
+        options: {
+          preset: 'google',
+          reporterOutput: 'reporter/scripts.jscs.txt'
+        }
       }
     },
-    // [NOTE] JEST Not Working For Now Since `--harmony` Flag Is Not Able To Setup
-    //jest: {
-    //  coverage: true,
-    //  testPathPattern: /.*.spec.js/
-    //},
     // empties folders to start fresh
     clean: {
       dev: 'reporter',
       lint: 'reporter'
-    }
+    },
+    /// [NOTE] JEST Not Working For Now Since `--harmony` Flag Is Not Able To Setup
+    //jest: {
+    //  coverage: true,
+    //  testPathPattern: /.*.spec.js/
+    //}
 
   });
 
