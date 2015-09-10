@@ -1,5 +1,5 @@
 .idea/
 node_modules/
 reporter/
-acupay-link/
+my-project-dir/
 **/*.log
