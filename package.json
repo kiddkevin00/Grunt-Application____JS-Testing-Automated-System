@@ -18,10 +18,11 @@
     "grunt-env": "^0.4.4",
     "grunt-jscs": "^2.1.0",
     "grunt-jsxhint": "^0.6.0",
+    "grunt-newer": "^1.1.1",
     "grunt-open": "^0.2.3",
     "jit-grunt": "^0.9.1",
     "jscs-stylish": "^0.3.1",
-    "jshint-stylish": "^2.0.1",
+    "jshint-html-reporter": "^0.2.4",
     "react-tools": "^0.13.3",
     "time-grunt": "^1.2.1"
   },

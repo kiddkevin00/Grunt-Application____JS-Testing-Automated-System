@@ -30,13 +30,11 @@ module.exports = function(grunt) {
           '<%= jshint.gruntfile.src %>',
           '<%= jshint.scripts.src %>'
         ],
-        tasks: ['newer:jscs', 'newer:jshint']
+        tasks: ['jscs', 'jshint']
       }
     },
     jshint: {
       options: {
-        maxerr: 10, // [TBD] For Shortening Run-Time Purpose
-        reporter: require('jshint-html-reporter'),
         force: true,
         strict: true,
         devel: true,
@@ -45,6 +43,7 @@ module.exports = function(grunt) {
         latedef: true,
         noarg: true,
         unused: true,
+        reporter: require('jshint-stylish'),
         globals: {
           modules: true,
           exports: true,
@@ -52,25 +51,20 @@ module.exports = function(grunt) {
         }
       },
       gruntfile: {
-        src: [
-          path.resolve(__dirname, '../Gruntfile.js')
-        ],
+        src: [process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, 'Gruntfile.js') || path.resolve(__dirname, 'my-project-dir/Gruntfile.js')],
         options: {
-          reporterOutput: 'reporter/grunt.jshint.html',
+          reporterOutput: 'reporter/grunt.jshint.txt',
           node: true
         }
       },
       scripts: {
         src: [
-          path.resolve(__dirname, '../**/*.+(js|jsx)'),
-          '!' + path.resolve(__dirname, '../Gruntfile.js'),
-          '!' + path.resolve(__dirname, '../js-build-automating-system/**'),
-          '!' + path.resolve(__dirname, '../**/*.min.+(js)'),
-          '!' + path.resolve(__dirname, '../node_modules/**'),
-          '!' + path.resolve(__dirname, '../**/bower_components/**')
+          process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '**/*.+(js|jsx)') || path.resolve(__dirname, 'my-project-dir'),
+          '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/node_modules/**') || path.resolve(__dirname, 'my-project-dir/node_modules/**')),
+          '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/client/bower_components/**') || path.resolve(__dirname, 'my-project-dir/client/bower_components/**'))
         ],
         options: {
-          reporterOutput: 'reporter/scripts.jshint.html',
+          reporterOutput: 'reporter/scripts.jshint.txt',
           esnext: true,
           browser: true,
           browserify: true,
@@ -92,20 +86,23 @@ module.exports = function(grunt) {
     },
     jscs: {
       options: {
-        maxErrors: 10, // [TBD] For Shortening Run-Time Purpose
         fix: false,
         verbose: true,
         force: true
       },
       gruntfile: {
-        src: '<%= jshint.gruntfile.src %>',
+        src: [process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, 'Gruntfile.js') || path.resolve(__dirname, 'my-project-dir/Gruntfile.js')],
         options: {
           preset: 'grunt',
           reporterOutput: 'reporter/grunt.jscs.txt'
         }
       },
       scripts: {
-        src: '<%= jshint.scripts.src %>',
+        src: [
+          process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '**/*.+(js|jsx)') || path.resolve(__dirname, 'my-project-dir'),
+          '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/node_modules/**') || path.resolve(__dirname, 'my-project-dir/node_modules/**')),
+          '!' + (process.env.MY_ABS_PATH && path.resolve(process.env.MY_ABS_PATH, '/client/bower_components/**') || path.resolve(__dirname, 'my-project-dir/client/bower_components/**'))
+        ],
         options: {
           preset: 'google',
           reporterOutput: 'reporter/scripts.jscs.txt'
