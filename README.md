@@ -7,10 +7,11 @@ Automating all-staged application developing, testing, building, deploying proce
 
 ## Usage
 - Run `$ git submodule add git@dev.bondcompro.com:Marcus_Hsu/js-build-automating-system.git`
-- Run `$ npm install .`  (if encounter any error, try to run $ npm install . --production again until no error)
+- (Optional) If testing in development environment, Check out development branch by run `$ git checkout develop` in `js-build-automating-system/` directory
+- Run `$ npm install .` in `js-build-automating-system/` directory (if encounter any error, try to run $ npm install . --production again until no error)
 - Run `$ npm start`
 
-## Technology (only list the main ones)
+## Technology
 
 * [Grunt] (http://gruntjs.com/)
 * [JSCS] (http://jscs.info/)
