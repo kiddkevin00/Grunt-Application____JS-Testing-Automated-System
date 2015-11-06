@@ -1,5 +1,5 @@
 {
-  "name": "js-build-automating-system",
+  "name": "js-testing-automated-system",
   "version": "0.0.0",
   "description": "Automating testing process for both Acupay and Bondcom Projects.",
   "main": "Gruntfile.js",

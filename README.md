@@ -6,10 +6,11 @@ Automating all-staged application developing, testing, building, deploying proce
 - npm
 
 ## Usage
-- Run `$ git submodule add git@dev.bondcompro.com:Marcus_Hsu/js-build-automating-system.git`
-- (Optional) If testing in development environment, Check out development branch by run `$ git checkout develop` in `js-build-automating-system/` directory
-- Run `$ npm install .` in `js-build-automating-system/` directory (if encounter any error, try to run $ npm install . --production again until no error)
-- Run `$ npm start`
+- Run `$ git submodule add git@github.com:kiddkevin00/js-testing-automated-system.git`
+- (Optional) If you want to test in development environment, check out development branch by run `$ git checkout develop` in `js-build-automating-system/` directory
+- Run `$ npm install .` in `js-build-automating-system/` directory as an administrator (if encounter any error, try to run `$ npm install .` again until no error)
+- Run `$ npm start` in `js-build-automating-system/` directory
+- Check out all the results in `reporter` directory, and enjoy the live-reload feature when correcting your codes
 
 ## Technology
 

@@ -30,8 +30,7 @@ module.exports = function(grunt) {
           '<%= jshint.gruntfile.src %>',
           '<%= jshint.scripts.src %>'
         ],
-        tasks: ['newer:jshint']
-        //tasks: ['newer:jscs', 'newer:jshint'] /// [NOTE] Uncomment this line back when JSCS testing is enabled
+        tasks: ['newer:jscs', 'newer:jshint']
       }
     },
     jshint: {
@@ -130,9 +129,7 @@ module.exports = function(grunt) {
   grunt.registerTask('develop', ['clean:dev', 'jscs', 'jshint', 'watch:gruntfile']);
 
   // for setup linting environment
-  grunt.registerTask('lint', ['clean:lint', 'jshint', 'watch:lint']);
-  /// [NOTE] Uncomment this line back when JSCS testing is enabled
-  //grunt.registerTask('lint', ['clean:lint', 'jscs', 'jshint', 'watch:lint']);
+  grunt.registerTask('lint', ['clean:lint', 'jscs', 'jshint', 'watch:lint']);
 
   // for default task
   grunt.registerTask('default', 'lint');
